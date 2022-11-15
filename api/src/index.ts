@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import mongoose from "mongoose";
 
@@ -8,6 +9,11 @@ mongoose
   .then(() => {
     const app = express();
     const port = 3001;
+
+     app.use(
+      // express.static(path.resolve(__dirname, "..", "uploads"))
+      express.static(path.resolve("/uploads",__dirname, '..', 'uploads').replace('\\src', ''))
+    );
 
     app.use(express.json());
     app.use(router);
