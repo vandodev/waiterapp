@@ -12,9 +12,12 @@ export async function createProduct(req: Request, res: Response) {
       description,
       price: Number(price),
       category,
-      igredients: igredients ?? JSON.parse(igredients),
+      // igredients: igredients ?? JSON.parse(igredients),
+      ingredients: igredients ? JSON.parse(igredients) : [],
       imagePath,
     });
+    // console.log(req.body);
+    // console.log(req.file);
     res.status(201).json(product);
   } catch (err) {
     console.error(err);
