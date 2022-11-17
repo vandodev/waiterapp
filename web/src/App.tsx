@@ -1,5 +1,11 @@
+import { GlobalStyles } from './styles/GlobalStyles';
+
 export function App(){
   return(
-    <h1>Olá mundo</h1>
+    <>
+        <GlobalStyles />
+        <h1>Olá mundo</h1>
+    </>
+
   )
 }
