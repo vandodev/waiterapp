@@ -1,6 +1,7 @@
 import { Overlay, ModalBody, OrderDetails} from './styles';
 import closeIcon from '../../assets/images/close-icon.svg';
 import {Order} from '../../types/Order';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 interface OrderModalProps {
   visible: boolean;
@@ -13,6 +14,11 @@ export function OrderModal({ visible, order }: OrderModalProps) {
  if(!visible || !order) {
     return null;
   }
+
+//   const price = new Intl.NumberFormat('pt-br',{style:'currency', currency:'BRL'}).format()
+ const total = order.products.reduce((total, { product, quantity }) => {
+    return total + (product.price * quantity);
+  }, 0);
 
   return (
     <Overlay>
@@ -59,10 +65,15 @@ export function OrderModal({ visible, order }: OrderModalProps) {
 
                 <div className="product-details">
                   <strong>{product.name}</strong>
-                  <span>{product.price}</span>
+                  <span>{formatCurrency(product.price)}</span>
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="total">
+            <span>Total</span>
+            <strong>{formatCurrency(total)}</strong>
           </div>
 
 

@@ -82,14 +82,20 @@ export const OrderDetails = styled.div`
            display: block;
            margin-bottom: 4px;
           }
-        }
 
-        span {
-          font-size: 14px;
-          color: #666;
+         span {
+            font-size: 14px;
+            color: #666;
+         }
         }
+     }
+    }
 
-    }
-    }
+    .total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+   }
 
 `;
