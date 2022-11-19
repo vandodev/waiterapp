@@ -6,10 +6,11 @@ import { formatCurrency } from '../../utils/formatCurrency';
 interface OrderModalProps {
   visible: boolean;
   order: Order | null;
+  onClose: () => void;
 }
 
 
-export function OrderModal({ visible, order }: OrderModalProps) {
+export function OrderModal({ visible, order, onClose }: OrderModalProps) {
 
  if(!visible || !order) {
     return null;
@@ -25,7 +26,7 @@ export function OrderModal({ visible, order }: OrderModalProps) {
         <ModalBody>
             <header>
              <strong>Mesa {order.table}</strong>
-             <button type="button">
+             <button type="button" onClick={onClose}>
               <img src={closeIcon} alt="Ícone de fechar" />
              </button>
           </header>
